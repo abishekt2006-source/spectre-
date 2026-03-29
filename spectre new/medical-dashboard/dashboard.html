@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Dashboard</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Background Animation -->
+        <div class="dashboard-background">
+            <div class="gradient-orb orb-1"></div>
+            <div class="gradient-orb orb-2"></div>
+            <div class="gradient-orb orb-3"></div>
+        </div>
+
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo-small">
+                    <svg width="32" height="32" viewBox="0 0 40 40" fill="none">
+                        <circle cx="20" cy="20" r="18" stroke="#4a9d6f" stroke-width="2"/>
+                        <path d="M12 20C12 15.6 15.6 12 20 12C24.4 12 28 15.6 28 20" stroke="#4a9d6f" stroke-width="2" fill="none"/>
+                    </svg>
+                    <span>FalconCare</span>
+                </div>
+                <button class="sidebar-toggle" id="sidebarToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="dashboard.html" class="nav-item active">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                    </svg>
+                    <span>Dashboard</span>
+                </a>
+                <a href="patients.html" class="nav-item">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <circle cx="12" cy="8" r="4"></circle>
+                        <path d="M4 20c0-4 3.13-7 8-7s8 3 8 7"></path>
+                    </svg>
+                    <span>Patients</span>
+                </a>
+                <button class="nav-item" id="reportsNavBtn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <line x1="12" y1="5" x2="12" y2="19"></line>
+                        <polyline points="19 12 12 19 5 12"></polyline>
+                    </svg>
+                    <span>Reports</span>
+                </button>
+                <button class="nav-item" id="alertsNavBtn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                    </svg>
+                    <span>Alerts</span>
+                </button>
+                <button class="nav-item" id="settingsNavBtn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <circle cx="12" cy="12" r="1"></circle>
+                        <path d="M12 1v6m0 6v6M4.22 4.22l4.24 4.24m5.08 5.08l4.24 4.24M1 12h6m6 0h6M4.22 19.78l4.24-4.24m5.08-5.08l4.24-4.24"></path>
+                    </svg>
+                    <span>Settings</span>
+                </button>
+            </nav>
+
+            <div class="sidebar-footer">
+                <button class="logout-btn" id="logoutBtn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                        <polyline points="16 17 21 12 16 7"></polyline>
+                        <line x1="21" y1="12" x2="9" y2="12"></line>
+                    </svg>
+                    <span>Logout</span>
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="top-header">
+                <div class="header-left">
+                    <h2 id="pageTitle">Dashboard</h2>
+                </div>
+                <div class="header-right">
+                    <div class="search-box">
+                        <input type="text" placeholder="Search patient..." id="searchInput">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.35-4.35"></path>
+                        </svg>
+                    </div>
+                    <button class="btn-primary add-patient-btn" id="addPatientBtn">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <circle cx="12" cy="12" r="1"></circle>
+                            <path d="M12 1v22M1 12h22"></path>
+                        </svg>
+                        Add Patient
+                    </button>
+                    <button class="notification-btn" id="alertsBtn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                            <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                        </svg>
+                        <span class="notification-badge" id="alertCount">3</span>
+                    </button>
+                    <div class="profile-menu">
+                        <button class="profile-btn">
+                            <div class="avatar">Dr. A</div>
+                        </button>
+                        <div class="profile-dropdown">
+                            <div class="dropdown-item">Profile</div>
+                            <div class="dropdown-item">Settings</div>
+                            <div class="dropdown-item logout-dropdown">Logout</div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard Content -->
+            <div class="dashboard-content">
+                <!-- Patient Information Card -->
+                <section class="patient-section">
+                    <div class="patient-card">
+                        <div class="patient-header">
+                            <div class="patient-avatar">
+                                <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <circle cx="12" cy="8" r="4"></circle>
+                                    <path d="M4 20c0-4 3.13-7 8-7s8 3 8 7"></path>
+                                </svg>
+                            </div>
+                            <div class="patient-info">
+                                <h3 id="patientName">John Anderson</h3>
+                                <p class="patient-id">ID: #PAT-2024-001</p>
+                                <div class="patient-status">Active Monitoring</div>
+                            </div>
+                            <div class="patient-actions">
+                                <button class="btn-icon" title="Edit patient">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                                        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="patient-details-grid">
+                            <div class="detail-item">
+                                <span class="detail-label">Age</span>
+                                <span class="detail-value" id="patientAge">45</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Sex</span>
+                                <span class="detail-value" id="patientSex">Male</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Blood Type</span>
+                                <span class="detail-value" id="patientBloodType">O+</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Height</span>
+                                <span class="detail-value" id="patientHeight">6'0"</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Weight</span>
+                                <span class="detail-value" id="patientWeight">180 lbs</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">BMI</span>
+                                <span class="detail-value" id="patientBMI">24.4</span>
+                            </div>
+                        </div>
+
+                        <div class="patient-notes">
+                            <h4>Medical History</h4>
+                            <p id="patientHistory">Hypertension, Type II Diabetes - Controlled with medication</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Vital Signs Overview -->
+                <section class="vitals-section">
+                    <h2 class="section-title">Vital Signs</h2>
+                    <div class="vitals-grid">
+                        <div class="vital-card">
+                            <div class="vital-icon heart">
+                                <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                                </svg>
+                            </div>
+                            <div class="vital-info">
+                                <p class="vital-label">Heart Rate</p>
+                                <h3 class="vital-value" id="heartRate">72</h3>
+                                <p class="vital-unit">bpm</p>
+                                <p class="vital-status normal">Normal Range</p>
+                            </div>
+                        </div>
+
+                        <div class="vital-card">
+                            <div class="vital-icon blood-pressure">
+                                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M6 9h12M6 13h12M8 17h8"></path>
+                                    <circle cx="12" cy="12" r="9"></circle>
+                                </svg>
+                            </div>
+                            <div class="vital-info">
+                                <p class="vital-label">Blood Pressure</p>
+                                <h3 class="vital-value" id="bloodPressure">120/80</h3>
+                                <p class="vital-unit">mmHg</p>
+                                <p class="vital-status normal">Normal</p>
+                            </div>
+                        </div>
+
+                        <div class="vital-card">
+                            <div class="vital-icon oxygen">
+                                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 2c-5.5 0-10 4.5-10 10s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2z"></path>
+                                    <path d="M12 7v10M7 12h10"></path>
+                                </svg>
+                            </div>
+                            <div class="vital-info">
+                                <p class="vital-label">O2 Saturation</p>
+                                <h3 class="vital-value" id="oxygen">98</h3>
+                                <p class="vital-unit">%</p>
+                                <p class="vital-status normal">Excellent</p>
+                            </div>
+                        </div>
+
+                        <div class="vital-card">
+                            <div class="vital-icon temperature">
+                                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 2v20"></path>
+                                    <circle cx="12" cy="20" r="3"></circle>
+                                    <path d="M12 8c-2.2 0-4-1.8-4-4 0-2.2 1.8-4 4-4s4 1.8 4 4c0 2.2-1.8 4-4 4z"></path>
+                                </svg>
+                            </div>
+                            <div class="vital-info">
+                                <p class="vital-label">Temperature</p>
+                                <h3 class="vital-value" id="temperature">98.6</h3>
+                                <p class="vital-unit">°F</p>
+                                <p class="vital-status normal">Normal</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Medical Data Displays -->
+                <section class="medical-data-section">
+                    <h2 class="section-title">Medical Monitoring</h2>
+                    
+                    <div class="medical-grid">
+                        <!-- ECG Chart -->
+                        <div class="medical-card">
+                            <div class="card-header">
+                                <h3>Heart ECG</h3>
+                                <span class="card-badge">Normal</span>
+                            </div>
+                            <div class="chart-container">
+                                <canvas id="ecgChart" width="400" height="200"></canvas>
+                            </div>
+                            <div class="card-footer">
+                                <p class="data-timestamp">Last updated: 2 min ago</p>
+                            </div>
+                        </div>
+
+                        <!-- Lung Sounds -->
+                        <div class="medical-card">
+                            <div class="card-header">
+                                <h3>Lung Animation</h3>
+                                <span class="card-badge" id="lungBadge">Clear</span>
+                            </div>
+                            <div class="lung-visualization">
+                                <canvas id="lungChart" width="350" height="250" style="max-width: 100%; height: auto;"></canvas>
+                            </div>
+                            <div class="card-footer">
+                                <p class="data-timestamp">Last updated: <span id="lungUpdateTime">5 min ago</span></p>
+                            </div>
+                        </div>
+
+                        <!-- Breathing Rate -->
+                        <div class="medical-card">
+                            <div class="card-header">
+                                <h3>Breathing Analysis</h3>
+                                <span class="card-badge">Stable</span>
+                            </div>
+                            <div class="breathing-visualization">
+                                <div class="breathing-indicator">
+                                    <div class="breath-wave"></div>
+                                    <p class="breathing-rate" id="breathingRate">16</p>
+                                    <p class="breathing-unit">breaths/min</p>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <p class="data-timestamp">Last updated: 1 min ago</p>
+                            </div>
+                        </div>
+
+                        <!-- Respiratory Chart -->
+                        <div class="medical-card">
+                            <div class="card-header">
+                                <h3>Respiratory Pattern</h3>
+                                <span class="card-badge">Regular</span>
+                            </div>
+                            <div class="chart-container">
+                                <canvas id="respiratoryChart" width="400" height="200"></canvas>
+                            </div>
+                            <div class="card-footer">
+                                <p class="data-timestamp">Last updated: 3 min ago</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Activity and Alerts -->
+                <section class="activity-section">
+                    <div class="activity-container">
+                        <div class="activity-card">
+                            <h3>Recent Activity</h3>
+                            <div class="activity-list">
+                                <div class="activity-item">
+                                    <div class="activity-time">10:45 AM</div>
+                                    <div class="activity-content">
+                                        <p class="activity-title">Vital Signs Check</p>
+                                        <p class="activity-desc">All parameters within normal range</p>
+                                    </div>
+                                </div>
+                                <div class="activity-item">
+                                    <div class="activity-time">09:30 AM</div>
+                                    <div class="activity-content">
+                                        <p class="activity-title">Medication Reminder</p>
+                                        <p class="activity-desc">Blood pressure medication scheduled</p>
+                                    </div>
+                                </div>
+                                <div class="activity-item">
+                                    <div class="activity-time">08:15 AM</div>
+                                    <div class="activity-content">
+                                        <p class="activity-title">Sleep Data Synced</p>
+                                        <p class="activity-desc">7.5 hours of sleep recorded</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="alerts-card">
+                            <h3>System Alerts</h3>
+                            <div class="alerts-list">
+                                <div class="alert-item warning">
+                                    <div class="alert-icon">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"></path>
+                                        </svg>
+                                    </div>
+                                    <div class="alert-content">
+                                        <p class="alert-title">Follow-up Appointment</p>
+                                        <p class="alert-desc">Due in 5 days</p>
+                                    </div>
+                                </div>
+                                <div class="alert-item info">
+                                    <div class="alert-icon">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                            <circle cx="12" cy="12" r="10"></circle>
+                                            <path d="M12 16v-4M12 8h.01" fill="white"></path>
+                                        </svg>
+                                    </div>
+                                    <div class="alert-content">
+                                        <p class="alert-title">Lab Results Ready</p>
+                                        <p class="alert-desc">Click to view results</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <!-- MODALS & INTERACTIVE PANELS -->
+
+    <!-- Add Patient Modal -->
+    <div class="modal" id="addPatientModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Add New Patient</h2>
+                <button class="modal-close" id="closeAddPatientModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="addPatientForm">
+                    <div class="form-group">
+                        <label>Patient Name</label>
+                        <input type="text" name="name" placeholder="Full Name" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Age</label>
+                            <input type="number" name="age" placeholder="Age" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Sex</label>
+                            <select name="sex" required>
+                                <option value="">Select</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Blood Type</label>
+                            <select name="bloodType" required>
+                                <option value="">Select</option>
+                                <option value="O+">O+</option>
+                                <option value="O-">O-</option>
+                                <option value="A+">A+</option>
+                                <option value="A-">A-</option>
+                                <option value="B+">B+</option>
+                                <option value="B-">B-</option>
+                                <option value="AB+">AB+</option>
+                                <option value="AB-">AB-</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Room Number</label>
+                            <input type="text" name="room" placeholder="Room #" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Diagnosis</label>
+                        <input type="text" name="diagnosis" placeholder="Primary Diagnosis" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Primary Doctor</label>
+                        <input type="text" name="doctor" placeholder="Doctor Name" required>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn-primary">Add Patient</button>
+                        <button type="button" class="btn-secondary" id="cancelAddPatient">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Reports Panel -->
+    <div class="modal" id="reportsModal">
+        <div class="modal-content modal-wide">
+            <div class="modal-header">
+                <h2>Patient Reports</h2>
+                <button class="modal-close" id="closeReportsModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="reports-section">
+                    <h3>Available Reports</h3>
+                    <div class="reports-grid">
+                        <div class="report-card">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#4a9d6f">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                                <line x1="12" y1="19" x2="12" y2="11"></line>
+                                <line x1="9" y1="16" x2="15" y2="16"></line>
+                            </svg>
+                            <h4>Vital Signs Report</h4>
+                            <p>24-hour vital signs summary</p>
+                            <button class="btn-small btn-primary">Generate</button>
+                        </div>
+                        <div class="report-card">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#4a9d6f">
+                                <line x1="12" y1="5" x2="12" y2="19"></line>
+                                <polyline points="19 12 12 19 5 12"></polyline>
+                            </svg>
+                            <h4>Lab Results</h4>
+                            <p>Complete blood work analysis</p>
+                            <button class="btn-small btn-primary">Generate</button>
+                        </div>
+                        <div class="report-card">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#4a9d6f">
+                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                            </svg>
+                            <h4>Medical History</h4>
+                            <p>Complete patient history</p>
+                            <button class="btn-small btn-primary">Generate</button>
+                        </div>
+                        <div class="report-card">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#4a9d6f">
+                                <circle cx="12" cy="12" r="1"></circle>
+                                <path d="M12 1v6m0 6v6"></path>
+                            </svg>
+                            <h4>Medication List</h4>
+                            <p>Current medications & dosages</p>
+                            <button class="btn-small btn-primary">Generate</button>
+                        </div>
+                    </div>
+                    <div style="margin-top: 20px; padding: 15px; background: rgba(74, 157, 111, 0.1); border-radius: 8px;">
+                        <p><strong>Last PDF Export:</strong> Today at 2:45 PM</p>
+                        <p style="margin-top: 8px; font-size: 0.9em;">Reports are automatically saved to patient record</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Alerts Panel -->
+    <div class="modal" id="alertsModal">
+        <div class="modal-content modal-wide">
+            <div class="modal-header">
+                <h2>System Alerts & Notifications</h2>
+                <button class="modal-close" id="closeAlertsModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="alerts-section">
+                    <div class="alert-filter">
+                        <button class="filter-btn active" data-filter="all">All</button>
+                        <button class="filter-btn" data-filter="critical">Critical</button>
+                        <button class="filter-btn" data-filter="warning">Warning</button>
+                        <button class="filter-btn" data-filter="info">Info</button>
+                    </div>
+                    <div class="alerts-list" id="alertsList">
+                        <div class="alert-item alert-critical">
+                            <div class="alert-icon">🔴</div>
+                            <div class="alert-content">
+                                <h4>Critical: HR Alert</h4>
+                                <p>Heart rate for Maria Sanchez (PAT-2024-002) exceeded 110 BPM</p>
+                                <small>2 minutes ago</small>
+                            </div>
+                            <button class="btn-small btn-danger">Acknowledge</button>
+                        </div>
+                        <div class="alert-item alert-warning">
+                            <div class="alert-icon">🟡</div>
+                            <div class="alert-content">
+                                <h4>Warning: O2 Level Low</h4>
+                                <p>Oxygen saturation for Jennifer Wu (PAT-2024-004) is 89%</p>
+                                <small>8 minutes ago</small>
+                            </div>
+                            <button class="btn-small btn-danger">Acknowledge</button>
+                        </div>
+                        <div class="alert-item alert-info">
+                            <div class="alert-icon">ℹ️</div>
+                            <div class="alert-content">
+                                <h4>Information: Medication Due</h4>
+                                <p>Robert Thompson (PAT-2024-003) medication dose due in 30 minutes</p>
+                                <small>15 minutes ago</small>
+                            </div>
+                            <button class="btn-small btn-primary">Mark Done</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Settings Panel -->
+    <div class="modal" id="settingsModal">
+        <div class="modal-content modal-wide">
+            <div class="modal-header">
+                <h2>Dashboard Settings</h2>
+                <button class="modal-close" id="closeSettingsModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="settings-section">
+                    <h3>Display Settings</h3>
+                    <div class="setting-item">
+                        <div class="setting-label">
+                            <label>Dark Theme</label>
+                            <p>Currently Active</p>
+                        </div>
+                        <input type="checkbox" class="toggle-switch" checked>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label">
+                            <label>Auto Refresh Vitals</label>
+                            <p>Update every 5 seconds</p>
+                        </div>
+                        <input type="checkbox" class="toggle-switch" checked>
+                    </div>
+                    <h3 style="margin-top: 30px;">Alert Settings</h3>
+                    <div class="setting-item">
+                        <div class="setting-label">
+                            <label>Critical Alerts</label>
+                            <p>Sound enabled</p>
+                        </div>
+                        <input type="checkbox" class="toggle-switch" checked>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label">
+                            <label>Email Notifications</label>
+                            <p>Send alerts via email</p>
+                        </div>
+                        <input type="checkbox" class="toggle-switch">
+                    </div>
+                    <h3 style="margin-top: 30px;">Chart Settings</h3>
+                    <div class="setting-item">
+                        <div class="setting-label">
+                            <label>Update Frequency</label>
+                            <p>Adjust chart animation speed</p>
+                        </div>
+                        <select style="padding: 8px; border-radius: 4px; border: 1px solid #2a3645; background: #16202b; color: #e8eef2;">
+                            <option>Normal (5 sec)</option>
+                            <option>Fast (2 sec)</option>
+                            <option>Slow (10 sec)</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Overlay -->
+    <div class="modal-overlay" id="modalOverlay"></div>
+
+    <script src="js/chart-simulator.js"></script>
+    <script src="js/patient-data.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Dashboard - Login</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="login-layout">
+    <div class="animation-overlay">
+        <!-- Subdued CSS-only animation objects -->
+        <div class="ambient-shape shape-1"></div>
+        <div class="ambient-shape shape-2"></div>
+    </div>
+    
+    <div class="login-container">
+        <div class="login-header">
+            <h1>Patient Monitor System</h1>
+            <p>Secure Staff Authentication</p>
+        </div>
+        <form id="loginForm" class="login-form">
+            <div class="form-group">
+                <label for="username">Staff ID</label>
+                <input type="text" id="username" placeholder="Enter your staff ID" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Enter password" required>
+            </div>
+            <button type="submit" class="primary-btn">Sign In</button>
+        </form>
+    </div>
+    <script src="js/main.js"></script>
+</body>
+</html>

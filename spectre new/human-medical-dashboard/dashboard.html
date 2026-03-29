@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monitoring Dashboard</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="dashboard-layout">
+    <nav class="navbar">
+        <div class="brand">Patient Monitor</div>
+        <div class="nav-actions">
+            <span class="staff-info">Dr. Abishek</span>
+            <button id="logoutBtn" class="secondary-btn">Log Out</button>
+        </div>
+    </nav>
+    
+    <main class="dashboard-grid">
+        <!-- Patient Details Section -->
+        <section class="patient-card card">
+            <h2>Patient Details</h2>
+            <div class="details-grid">
+                <div class="detail-item">
+                    <span class="label">Name</span>
+                    <span class="value">Vishal</span>
+                </div>
+                <div class="detail-item">
+                    <span class="label">Age</span>
+                    <span class="value">45</span>
+                </div>
+                <div class="detail-item">
+                    <span class="label">Sex</span>
+                    <span class="value">Male</span>
+                </div>
+                <div class="detail-item">
+                    <span class="label">Weight</span>
+                    <span class="value">78 kg</span>
+                </div>
+                <div class="detail-item">
+                    <span class="label">Height</span>
+                    <span class="value">175 cm</span>
+                </div>
+                <div class="detail-item">
+                    <span class="label">Room</span>
+                    <span class="value">304-B</span>
+                </div>
+                <div class="detail-item">
+                    <span class="label">Status</span>
+                    <span class="value status-stable">Stable</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ECG Section -->
+        <section class="vitals-card card">
+            <div class="card-header">
+                <h2>Continuous ECG</h2>
+                <div class="bpm-display"><span id="bpmValue">72</span> BPM</div>
+            </div>
+            <div class="ecg-container">
+                <canvas id="ecgCanvas"></canvas>
+            </div>
+        </section>
+
+        <!-- Audio Section -->
+        <section class="audio-card card">
+            <h2>Auscultation (Diagnostics)</h2>
+            <div class="audio-controls">
+                <div class="audio-item">
+                    <div class="audio-info">
+                        <span class="audio-label">Lung Sounds</span>
+                        <span class="audio-status">Idle</span>
+                    </div>
+                    <button class="secondary-btn play-btn" data-target="lungs">Play Audio</button>
+                    <div class="audio-wave" id="wave-lungs"></div>
+                </div>
+                
+                <div class="audio-item">
+                    <div class="audio-info">
+                        <span class="audio-label">Breathing Sounds</span>
+                        <span class="audio-status">Idle</span>
+                    </div>
+                    <button class="secondary-btn play-btn" data-target="breathing">Play Audio</button>
+                    <div class="audio-wave" id="wave-breathing"></div>
+                </div>
+                
+                <div class="audio-item">
+                    <div class="audio-info">
+                        <span class="audio-label">Heart Sounds</span>
+                        <span class="audio-status">Idle</span>
+                    </div>
+                    <button class="secondary-btn play-btn" data-target="heart">Play Audio</button>
+                    <div class="audio-wave" id="wave-heart"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

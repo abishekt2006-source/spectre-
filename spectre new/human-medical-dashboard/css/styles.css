@@ -1,0 +1,437 @@
+:root {
+    --bg-dark: #121214;
+    --bg-card: #202024;
+    --bg-input: #2A2A2E;
+    
+    --text-main: #E2E2E2;
+    --text-muted: #8E8F94;
+    
+    --accent-blue: #446882;
+    --accent-blue-hover: #5A83A1;
+    --accent-green: #4C7256;
+    --accent-red: #8B4A4A;
+    
+    --border-color: #35353A;
+    
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    
+    --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ==================================
+   LOGIN PAGE
+================================== */
+.login-layout {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+.animation-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    overflow: hidden;
+    background: radial-gradient(circle at center, #1b1b1e 0%, #121214 100%);
+}
+
+.ambient-shape {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.15;
+    animation: drift 20s infinite alternate ease-in-out;
+}
+
+.shape-1 {
+    width: 60vh;
+    height: 60vh;
+    background: #446882;
+    top: -10vh;
+    left: -10vw;
+}
+
+.shape-2 {
+    width: 50vh;
+    height: 50vh;
+    background: #4C7256;
+    bottom: -10vh;
+    right: -10vw;
+    animation-delay: -10s;
+}
+
+@keyframes drift {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(10vw, 5vh) scale(1.1); }
+}
+
+.login-container {
+    position: relative;
+    z-index: 10;
+    background-color: var(--bg-card);
+    padding: 40px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-color);
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.login-header {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.login-header h1 {
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: var(--text-main);
+}
+
+.login-header p {
+    font-size: 14px;
+    color: var(--text-muted);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 13px;
+    margin-bottom: 8px;
+    color: var(--text-muted);
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--bg-input);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    color: var(--text-main);
+    font-family: inherit;
+    font-size: 14px;
+    transition: border-color 0.2s;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--accent-blue);
+}
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+    border: none;
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    font-weight: 500;
+    transition: background-color 0.2s, opacity 0.2s;
+}
+
+.primary-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--accent-blue);
+    color: white;
+}
+
+.primary-btn:hover {
+    background-color: var(--accent-blue-hover);
+}
+
+.secondary-btn {
+    padding: 8px 16px;
+    background-color: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-main);
+}
+
+.secondary-btn:hover {
+    background-color: var(--bg-input);
+}
+
+/* ==================================
+   DASHBOARD PAGE
+================================== */
+.dashboard-layout {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 32px;
+    background-color: var(--bg-card);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.brand {
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.staff-info {
+    font-size: 14px;
+    color: var(--text-muted);
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 32px;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    flex: 1;
+}
+
+@media (min-width: 900px) {
+    .dashboard-grid {
+        grid-template-columns: 300px 1fr;
+        grid-template-rows: auto auto;
+    }
+    
+    .patient-card {
+        grid-column: 1 / 2;
+        grid-row: 1 / 3;
+    }
+
+    .vitals-card {
+        grid-column: 2 / 3;
+        grid-row: 1 / 2;
+    }
+
+    .audio-card {
+        grid-column: 2 / 3;
+        grid-row: 2 / 3;
+    }
+}
+
+.card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 24px;
+}
+
+.card h2 {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 20px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Patient Details */
+.details-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.detail-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.detail-item:last-child {
+    border-bottom: none;
+}
+
+.detail-item .label {
+    color: var(--text-muted);
+    font-size: 14px;
+}
+
+.detail-item .value {
+    font-weight: 500;
+    font-size: 15px;
+}
+
+.status-stable {
+    color: var(--accent-green);
+    background-color: rgba(76, 114, 86, 0.15);
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    border: 1px solid rgba(76, 114, 86, 0.3);
+}
+
+/* ECG Card */
+.vitals-card {
+    display: flex;
+    flex-direction: column;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.card-header h2 {
+    margin-bottom: 0;
+}
+
+.bpm-display {
+    font-size: 18px;
+    color: var(--accent-green);
+}
+
+.bpm-display span {
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.ecg-container {
+    background-color: #161618;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    height: 180px;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    /* Subtle grid background */
+    background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 20px 20px;
+}
+
+canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+/* Audio Controls */
+.audio-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.audio-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background-color: var(--bg-input);
+    padding: 16px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-color);
+}
+
+.audio-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.audio-label {
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.audio-status {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 4px;
+}
+
+.audio-item button {
+    min-width: 100px;
+}
+
+/* Audio Wave Visualizer */
+.audio-wave {
+    width: 40px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    opacity: 0.3;
+}
+
+.audio-wave.playing {
+    opacity: 1;
+}
+
+.audio-wave::before,
+.audio-wave::after,
+.audio-wave .bar {
+    content: '';
+    display: block;
+    width: 6px;
+    background-color: var(--accent-blue);
+    border-radius: 3px;
+    height: 4px; /* Default height when idle */
+    transition: height 0.2s ease;
+}
+
+/* Simple animation for 'playing' state */
+.audio-wave.playing::before {
+    animation: bar-jump 1s infinite ease-in-out;
+}
+.audio-wave.playing .bar {
+    animation: bar-jump 1.2s infinite ease-in-out -0.4s;
+}
+.audio-wave.playing::after {
+    animation: bar-jump 0.9s infinite ease-in-out -0.2s;
+}
+
+@keyframes bar-jump {
+    0%, 100% { height: 8px; }
+    50% { height: 24px; }
+}
+
+@media (max-width: 600px) {
+    .audio-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .audio-wave {
+        display: none;
+    }
+}

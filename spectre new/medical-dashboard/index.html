@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Dashboard - Login</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="login-container">
+        <!-- Animated background -->
+        <div class="background-animation">
+            <div class="blob blob-1"></div>
+            <div class="blob blob-2"></div>
+            <div class="blob blob-3"></div>
+        </div>
+
+        <div class="login-wrapper">
+            <div class="login-box">
+                <div class="login-header">
+                    <div class="logo">
+                        <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                            <circle cx="20" cy="20" r="18" stroke="#4a9d6f" stroke-width="2"/>
+                            <path d="M12 20C12 15.6 15.6 12 20 12C24.4 12 28 15.6 28 20" stroke="#4a9d6f" stroke-width="2" fill="none"/>
+                            <path d="M15 20C15 17.2 17.2 15 20 15C22.8 15 25 17.2 25 20" stroke="#5db87f" stroke-width="2" fill="none"/>
+                        </svg>
+                    </div>
+                    <h1>FalconCare</h1>
+                </div>
+
+                <form id="loginForm" class="login-form">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input 
+                            type="text" 
+                            id="username" 
+                            name="username" 
+                            placeholder="Enter your username"
+                            required
+                        >
+                        <div class="form-focus-effect"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input 
+                            type="password" 
+                            id="password" 
+                            name="password" 
+                            placeholder="Enter your password"
+                            required
+                        >
+                        <div class="form-focus-effect"></div>
+                    </div>
+
+                    <div class="form-options">
+                        <label class="checkbox-container">
+                            <input type="checkbox" id="remember">
+                            <span class="checkmark"></span>
+                            Remember me
+                        </label>
+                        <a href="#" class="forgot-password">Forgot password?</a>
+                    </div>
+
+                    <button type="submit" class="login-btn">Sign In</button>
+                </form>
+
+                <div class="login-footer">
+                    <p>Don't have an account? <a href="#">Contact administrator</a></p>
+                </div>
+            </div>
+
+            <div class="login-info">
+                <div class="info-item">
+                    <div class="info-icon">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                            <path d="M16 2C8.27 2 2 8.27 2 16C2 23.73 8.27 30 16 30C23.73 30 30 23.73 30 16C30 8.27 23.73 2 16 2Z" stroke="#5db87f" stroke-width="1.5" fill="none"/>
+                            <path d="M16 8V16L21.5 19.5" stroke="#5db87f" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h3>24/7 Monitoring</h3>
+                    <p>Real-time patient vital monitoring</p>
+                </div>
+
+                <div class="info-item">
+                    <div class="info-icon">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                            <path d="M4 16C4 9.37 9.37 4 16 4C22.63 4 28 9.37 28 16C28 22.63 22.63 28 16 28C9.37 28 4 22.63 4 16Z" stroke="#4a7c59" stroke-width="1.5" fill="none"/>
+                            <path d="M12 16L14.5 18.5L20 12.5" stroke="#4a7c59" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3>Secure Access</h3>
+                    <p>HIPAA compliant data protection</p>
+                </div>
+
+                <div class="info-item">
+                    <div class="info-icon">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                            <circle cx="16" cy="12" r="5" stroke="#5db87f" stroke-width="1.5" fill="none"/>
+                            <path d="M6 24C6 19.58 10.48 16 16 16C21.52 16 26 19.58 26 24" stroke="#5db87f" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h3>Patient Management</h3>
+                    <p>Comprehensive patient data overview</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,357 @@
+{
+  "documentation": "Sample data structures for Medical Dashboard API",
+  "version": "1.0.0",
+
+  "authentication": {
+    "login_request": {
+      "username": "doctor_001",
+      "password": "securepassword"
+    },
+    "login_response": {
+      "success": true,
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+      "user": {
+        "id": "user_001",
+        "username": "doctor_001",
+        "name": "Dr. John Smith",
+        "role": "doctor",
+        "email": "john.smith@hospital.com",
+        "department": "Cardiology"
+      }
+    }
+  },
+
+  "patient": {
+    "id": "PAT-2024-001",
+    "name": "John Anderson",
+    "age": 45,
+    "sex": "Male",
+    "date_of_birth": "1978-09-15",
+    "blood_type": "O+",
+    "height": "6'0\"",
+    "height_cm": 183,
+    "weight": "180 lbs",
+    "weight_kg": 81.6,
+    "bmi": 24.4,
+    "admission_date": "2024-03-15",
+    "room_number": "245",
+    "bed_number": "B",
+    "medical_history": [
+      "Hypertension (diagnosed 2015)",
+      "Type II Diabetes (diagnosed 2018)",
+      "Hyperlipidemia (controlled with medication)"
+    ],
+    "current_medications": [
+      {
+        "name": "Lisinopril",
+        "dosage": "10mg",
+        "frequency": "Once daily",
+        "indication": "Hypertension"
+      },
+      {
+        "name": "Metformin",
+        "dosage": "500mg",
+        "frequency": "Twice daily",
+        "indication": "Type II Diabetes"
+      },
+      {
+        "name": "Atorvastatin",
+        "dosage": "20mg",
+        "frequency": "Once daily",
+        "indication": "Hyperlipidemia"
+      }
+    ],
+    "allergies": [
+      "Penicillin (rash)",
+      "NSAIDs (GI upset)"
+    ],
+    "emergency_contact": {
+      "name": "Sarah Anderson",
+      "relationship": "Spouse",
+      "phone": "+1-555-0123"
+    },
+    "primary_doctor": {
+      "id": "doc_001",
+      "name": "Dr. Sarah Johnson",
+      "specialization": "Cardiology"
+    },
+    "insurance": {
+      "provider": "Blue Cross",
+      "policy_number": "BC123456789",
+      "group_number": "GRP789"
+    }
+  },
+
+  "vitals": {
+    "current": {
+      "timestamp": "2024-03-28T10:45:30Z",
+      "heart_rate": {
+        "value": 72,
+        "unit": "bpm",
+        "normal_range": "60-100",
+        "status": "normal"
+      },
+      "blood_pressure": {
+        "systolic": 120,
+        "diastolic": 80,
+        "unit": "mmHg",
+        "normal_range": "<120/<80",
+        "status": "normal"
+      },
+      "oxygen_saturation": {
+        "value": 98,
+        "unit": "%",
+        "normal_range": "95-100",
+        "status": "excellent"
+      },
+      "temperature": {
+        "value": 98.6,
+        "unit": "°F",
+        "normal_range": "97.0-99.0",
+        "status": "normal"
+      },
+      "respiratory_rate": {
+        "value": 16,
+        "unit": "breaths/min",
+        "normal_range": "12-20",
+        "status": "normal"
+      }
+    },
+    "history": [
+      {
+        "timestamp": "2024-03-28T10:40:30Z",
+        "heart_rate": 71,
+        "systolic_bp": 119,
+        "diastolic_bp": 79,
+        "oxygen_saturation": 98,
+        "temperature": 98.5,
+        "respiratory_rate": 16
+      },
+      {
+        "timestamp": "2024-03-28T10:35:30Z",
+        "heart_rate": 73,
+        "systolic_bp": 121,
+        "diastolic_bp": 81,
+        "oxygen_saturation": 98,
+        "temperature": 98.7,
+        "respiratory_rate": 17
+      }
+    ]
+  },
+
+  "medical_data": {
+    "ecg": {
+      "timestamp": "2024-03-28T10:45:30Z",
+      "sampling_rate": 500,
+      "duration_seconds": 300,
+      "units": "mV",
+      "status": "normal",
+      "interpretation": "Normal sinus rhythm",
+      "data": [
+        -0.5, -0.3, 0.1, 0.8, 1.2, 0.9, 0.2, -0.4,
+        -0.6, -0.2, 0.3, 1.1, 1.5, 1.0, 0.1, -0.5
+      ]
+    },
+    "respiratory": {
+      "timestamp": "2024-03-28T10:45:30Z",
+      "sampling_rate": 100,
+      "duration_seconds": 300,
+      "units": "volume",
+      "status": "stable",
+      "data": [
+        0.0, 0.1, 0.3, 0.5, 0.7, 0.8, 0.9, 0.8,
+        0.6, 0.4, 0.2, 0.1, 0.0, -0.1, -0.2, 0.0
+      ]
+    },
+    "lung_sounds": {
+      "timestamp": "2024-03-28T10:45:30Z",
+      "left_lung": {
+        "status": "clear",
+        "quality": "good",
+        "sound_classification": "vesicular",
+        "frequency_analysis": {
+          "low": 0.1,
+          "mid": 0.05,
+          "high": 0.02
+        },
+        "abnormalities": []
+      },
+      "right_lung": {
+        "status": "clear",
+        "quality": "good",
+        "sound_classification": "vesicular",
+        "frequency_analysis": {
+          "low": 0.12,
+          "mid": 0.06,
+          "high": 0.03
+        },
+        "abnormalities": []
+      },
+      "clinical_notes": "Normal breathing sounds bilaterally"
+    }
+  },
+
+  "alerts": [
+    {
+      "id": "alert_001",
+      "type": "warning",
+      "title": "Follow-up Appointment",
+      "description": "Follow-up cardiology appointment due in 5 days",
+      "timestamp": "2024-03-28T08:00:00Z",
+      "priority": "medium",
+      "action_required": true,
+      "dismiss_button": true
+    },
+    {
+      "id": "alert_002",
+      "type": "info",
+      "title": "Lab Results Ready",
+      "description": "Blood work results available. Click to view detailed report.",
+      "timestamp": "2024-03-28T09:30:00Z",
+      "priority": "low",
+      "action_required": false,
+      "link": "/reports/lab_results_2024-03-28"
+    },
+    {
+      "id": "alert_003",
+      "type": "critical",
+      "title": "High Blood Pressure",
+      "description": "Sustained BP readings above 140/90 mmHg for 2+ hours",
+      "timestamp": "2024-03-28T14:15:00Z",
+      "priority": "high",
+      "action_required": true,
+      "recommended_action": "Contact attending physician"
+    }
+  ],
+
+  "activity_log": [
+    {
+      "id": "activity_001",
+      "timestamp": "2024-03-28T10:45:00Z",
+      "type": "vital_check",
+      "title": "Vital Signs Check",
+      "description": "All parameters within normal range",
+      "initiated_by": "Automated Monitoring",
+      "status": "completed"
+    },
+    {
+      "id": "activity_002",
+      "timestamp": "2024-03-28T09:30:00Z",
+      "type": "medication",
+      "title": "Medication Reminder",
+      "description": "Blood pressure medication (Lisinopril 10mg) scheduled",
+      "initiated_by": "Medication Schedule",
+      "status": "pending"
+    },
+    {
+      "id": "activity_003",
+      "timestamp": "2024-03-28T08:15:00Z",
+      "type": "data_sync",
+      "title": "Sleep Data Synced",
+      "description": "7.5 hours of sleep recorded from wearable device",
+      "initiated_by": "Wearable Device",
+      "status": "completed"
+    },
+    {
+      "id": "activity_004",
+      "timestamp": "2024-03-27T22:00:00Z",
+      "type": "assessment",
+      "title": "Evening Assessment",
+      "description": "Routine nursing assessment completed",
+      "initiated_by": "Nurse Johnson",
+      "status": "completed"
+    }
+  ],
+
+  "reports": [
+    {
+      "id": "report_001",
+      "type": "daily_summary",
+      "date": "2024-03-28",
+      "generated_at": "2024-03-28T23:59:59Z",
+      "summary": {
+        "average_heart_rate": 71.5,
+        "average_bp": "119/80",
+        "average_oxygen": 98.2,
+        "average_temp": 98.6,
+        "average_respiratory": 16.2,
+        "total_medications_taken": 3,
+        "abnormalities": 0,
+        "alerts": 1
+      }
+    }
+  ],
+
+  "api_errors": {
+    "invalid_credentials": {
+      "code": "AUTH_001",
+      "status": 401,
+      "message": "Invalid username or password"
+    },
+    "token_expired": {
+      "code": "AUTH_002",
+      "status": 401,
+      "message": "Token has expired. Please login again."
+    },
+    "unauthorized": {
+      "code": "AUTH_003",
+      "status": 403,
+      "message": "You do not have permission to access this resource"
+    },
+    "patient_not_found": {
+      "code": "PAT_001",
+      "status": 404,
+      "message": "Patient not found"
+    },
+    "invalid_request": {
+      "code": "REQ_001",
+      "status": 400,
+      "message": "Invalid request format"
+    },
+    "server_error": {
+      "code": "SRV_001",
+      "status": 500,
+      "message": "Internal server error"
+    }
+  },
+
+  "endpoints_reference": {
+    "auth": {
+      "login": "POST /api/auth/login",
+      "logout": "POST /api/auth/logout",
+      "verify": "GET /api/auth/verify"
+    },
+    "patients": {
+      "get": "GET /api/patients/{patient_id}",
+      "update": "PUT /api/patients/{patient_id}",
+      "list": "GET /api/patients"
+    },
+    "vitals": {
+      "current": "GET /api/vitals/{patient_id}/current",
+      "history": "GET /api/vitals/{patient_id}/history",
+      "record": "POST /api/vitals/{patient_id}"
+    },
+    "medical_data": {
+      "ecg": "GET /api/medical/{patient_id}/ecg",
+      "respiratory": "GET /api/medical/{patient_id}/respiratory",
+      "lung_sounds": "GET /api/medical/{patient_id}/lung-sounds"
+    },
+    "alerts": {
+      "list": "GET /api/alerts/{patient_id}",
+      "get": "GET /api/alerts/{patient_id}/{alert_id}",
+      "dismiss": "POST /api/alerts/{patient_id}/{alert_id}/dismiss"
+    },
+    "activity": {
+      "list": "GET /api/activity/{patient_id}",
+      "get": "GET /api/activity/{patient_id}/{activity_id}"
+    }
+  },
+
+  "notes": {
+    "important": "This is sample data structure. Adapt to your actual database schema.",
+    "security": "All timestamps should be in UTC ISO 8601 format.",
+    "validation": "Validate all inputs on the server side.",
+    "performance": "Consider caching frequently accessed patient data.",
+    "compliance": "Ensure all data handling complies with HIPAA/GDPR requirements."
+  }
+}
